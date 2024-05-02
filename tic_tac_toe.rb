@@ -9,6 +9,17 @@ class TicTacToe
     @board = "1 | 2 | 3\n__|___|___\n4 | 5 | 6\n__|___|___\n7 | 8 | 9\n  |   |\n"
   end
 
+  def who_won(counter)
+    winning_indices = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
+
+    winning_indices.each do |combination|
+      return "\n#{player1} won!\n\n#{board}" if combination.to_set.subset?(indices_of_x.to_set)
+      return "\n#{player2} won!\n\n#{board}" if combination.to_set.subset?(indices_of_o.to_set)
+      return "\nDraw!\n\n#{board}" if counter == 9
+    end
+    nil
+  end
+
   protected
 
   def chosen_players
