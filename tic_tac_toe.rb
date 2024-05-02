@@ -17,4 +17,8 @@ class TicTacToe
     print "\nName of Player 2:\t"
     @player2 = gets.chomp
   end
+
+  def board_arr
+    board.split('').select { |char| ('1'..'9').include?(char) || char == 'X' || char == 'O' }
+  end
 end
