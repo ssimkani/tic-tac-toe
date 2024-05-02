@@ -9,6 +9,18 @@ class TicTacToe
     @board = "1 | 2 | 3\n__|___|___\n4 | 5 | 6\n__|___|___\n7 | 8 | 9\n  |   |\n"
   end
 
+  def play
+    chose_players
+    counter = 0
+    until who_won(counter)
+      puts "\n#{player_turn(counter)}\'s turn\n\n"
+      puts board
+      change_board(counter)
+      counter += 1
+    end
+    puts who_won(counter)
+  end
+
   def who_won(counter)
     winning_indices = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
 
