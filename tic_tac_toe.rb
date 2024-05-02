@@ -36,9 +36,9 @@ class TicTacToe
 
   def chose_players
     print "Name of Player 1:\t"
-    @player1 = gets.chomp
+    @player1 = gets.chomp.strip
     print "\nName of Player 2:\t"
-    @player2 = gets.chomp
+    @player2 = gets.chomp.strip
   end
 
   def player_turn(counter)
@@ -50,7 +50,7 @@ class TicTacToe
   end
 
   def change_board(counter)
-    print "\nSelect the Placement of your marker (1-9):\t"
+    print "\nSelect the placement of your marker (1-9):\t"
     placement = gets.chomp
     if ('1'..'9').to_a.include?(placement)
       @board = board.tr(placement, player_turn(counter) == player1 ? 'X' : 'O')
