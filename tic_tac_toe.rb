@@ -18,6 +18,14 @@ class TicTacToe
     @player2 = gets.chomp
   end
 
+  def player_turn(counter)
+    if counter.even?
+      player1
+    else
+      player2
+    end
+  end
+
   def board_arr
     board.split('').select { |char| ('1'..'9').include?(char) || char == 'X' || char == 'O' }
   end
