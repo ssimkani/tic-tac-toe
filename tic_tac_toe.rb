@@ -26,6 +26,17 @@ class TicTacToe
     end
   end
 
+  def change_board(counter)
+    print "\nSelect the Placement of your marker (1-9):\t"
+    placement = gets.chomp
+    if ('1'..'9').to_a.include?(placement)
+      @board = board.tr(placement, player_turn(counter) == player1 ? 'X' : 'O')
+    else
+      puts "\nInvalid input."
+      change_board(counter)
+    end
+  end
+
   def board_arr
     board.split('').select { |char| ('1'..'9').include?(char) || char == 'X' || char == 'O' }
   end
