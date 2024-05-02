@@ -40,4 +40,20 @@ class TicTacToe
   def board_arr
     board.split('').select { |char| ('1'..'9').include?(char) || char == 'X' || char == 'O' }
   end
+
+  def indices_of_x
+    indices_of_x_arr = []
+    board_arr.each_with_index do |value, index|
+      indices_of_x_arr << index if value == 'X'
+    end
+    indices_of_x_arr
+  end
+
+  def indices_of_o
+    indices_of_o_arr = []
+    board_arr.each_with_index do |value, index|
+      indices_of_o_arr << index if value == 'O'
+    end
+    indices_of_o_arr
+  end
 end
