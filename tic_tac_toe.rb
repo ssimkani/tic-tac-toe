@@ -34,7 +34,7 @@ class TicTacToe
 
   protected
 
-  def chosen_players
+  def chose_players
     print "Name of Player 1:\t"
     @player1 = gets.chomp
     print "\nName of Player 2:\t"
@@ -80,3 +80,6 @@ class TicTacToe
     indices_of_o_arr
   end
 end
+
+ttt = TicTacToe.new
+ttt.play
