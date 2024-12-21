@@ -21,16 +21,16 @@ class TicTacToe
     # Plays a game of Tic Tac Toe
     chose_players
     counter = 0
-    until who_won(counter)
+    until who_won
       puts "\n#{player_turn(counter)}\'s turn\n\n"
       puts board
       change_board(counter)
       counter += 1
     end
-    puts who_won(counter)
+    puts who_won
   end
 
-  def who_won(counter)
+  def who_won
     # Determines who won the game of Tic Tac Toe and returns a message
     # indicating the winner, or "Draw!" if the game was tied.
     winning_indices = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]]
@@ -38,7 +38,7 @@ class TicTacToe
     winning_indices.each do |combination|
       return "\n#{player1} won!\n\n#{board}" if combination.to_set.subset?(indices_of_x.to_set)
       return "\n#{player2} won!\n\n#{board}" if combination.to_set.subset?(indices_of_o.to_set)
-      return "\nDraw!\n\n#{board}" if counter == 9
+      return "\nDraw!\n\n#{board}" if board_arr.none? { |cell| ('1'..'9').include?(cell) }
     end
     nil
   end
