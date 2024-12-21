@@ -58,5 +58,30 @@ RSpec.describe TicTacToe do
         expect(game.who_won).to eq(expected_output)
       end
     end
+
+    context 'When it is a draw' do
+      it 'detects a draw' do
+        game.board = " X | O | X \n---|---|---\n O | X | O \n---|---|---\n X | X | O \n"
+        expected_output = "\nDraw!\n\n#{game.board}"
+
+        expect(game.who_won).to eq(expected_output)
+      end
+    end
+  end
+
+  describe '#player_turn' do
+    context 'When it is Player 1 turn' do
+      it 'returns Player 1' do
+        current_player = game.send(:player_turn, 0)
+        expect(current_player).to eq(game.player1)
+      end
+    end
+
+    context 'When it is Player 2 turn' do
+      it 'returns Player 2' do
+        current_player = game.send(:player_turn, 1)
+        expect(current_player).to eq(game.player2)
+      end
+    end
   end
 end
