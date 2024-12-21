@@ -35,5 +35,28 @@ RSpec.describe TicTacToe do
         expect(game.who_won).to eq(expected_output)
       end
     end
+
+    context 'When Player 2 wins' do
+      it 'detects horizontal win' do
+        game.board = " O | O | O \n---|---|---\n 4 | 5 | 6 \n---|---|---\n 7 | 8 | 9 \n"
+        expected_output = "\n#{game.player2} won!\n\n#{game.board}"
+
+        expect(game.who_won).to eq(expected_output)
+      end
+
+      it 'detects vertical win' do
+        game.board = " O | 2 | 3 \n---|---|---\n O | 5 | 6 \n---|---|---\n O | 8 | 9 \n"
+        expected_output = "\n#{game.player2} won!\n\n#{game.board}"
+
+        expect(game.who_won).to eq(expected_output)
+      end
+
+      it 'detects diagonal win' do
+        game.board = " O | 2 | 3 \n---|---|---\n 4 | O | 6 \n---|---|---\n 7 | 8 | O \n"
+        expected_output = "\n#{game.player2} won!\n\n#{game.board}"
+
+        expect(game.who_won).to eq(expected_output)
+      end
+    end
   end
 end
