@@ -8,13 +8,14 @@
 #   ttt.play
 #
 class TicTacToe
-  attr_accessor :player1, :player2, :board
+  attr_accessor :player1, :player2, :board, :rspec_test
 
   def initialize
     # Initialize the game and sets up the board.
     @player1 = ''
     @player2 = ''
     @board = "1 | 2 | 3\n__|___|___\n4 | 5 | 6\n__|___|___\n7 | 8 | 9\n  |   |\n"
+    @rspec_test = false
   end
 
   def play
@@ -46,6 +47,8 @@ class TicTacToe
   protected
 
   def chose_players
+    return if rspec_test == true # For RSpec testing
+
     # Prompts the user to enter the names of the two players.
     print "Name of Player 1:\t"
     @player1 = gets.chomp.strip
@@ -63,6 +66,8 @@ class TicTacToe
   end
 
   def change_board(counter)
+    return if rspec_test == true # For RSpec testing
+
     # Changes the game board based on the player's input and updates
     # the game state.
     print "\nSelect the placement of your marker (1-9):\t"
